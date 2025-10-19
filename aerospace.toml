@@ -1,112 +1,112 @@
 # ====================================================================
-# AEROSPACE CONFIG: PRODUTIVIDADE E FLEXIBILIDADE KEYBOARD-CENTRIC
-# Otimizado para setups multi-monitor (sem atribuição forçada de monitor).
+# AEROSPACE CONFIG: KEYBOARD-CENTRIC PRODUCTIVITY AND FLEXIBILITY
+# Optimized for multi-monitor setups (without forced monitor assignment).
 # ====================================================================
 
 # =======================#
-# 1. COMANDOS DE INICIALIZAÇÃO
+# 1. STARTUP COMMANDS
 # =======================#
 
-# Inicia o AeroSpace automaticamente no login do macOS
+# Start AeroSpace automatically on macOS login
 start-at-login = true
 
-# Comandos vazios, pois a automação de janelas é feita via [[on-window-detected]]
+# Empty commands, as window automation is handled via [[on-window-detected]]
 after-login-command = []
 
-# Inicializa o JankyBorders (Requer instalação manual)
+# Initialize JankyBorders (Requires manual installation)
 after-startup-command = [
     'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
 ]
 
 # =======================#
-# 2. COMPORTAMENTO DE JANELAS
+# 2. WINDOW BEHAVIOR
 # =======================#
 
-# Normaliza a árvore de janelas para evitar divisões desnecessárias
+# Normalize the window tree to prevent unnecessary divisions
 enable-normalization-flatten-containers = true
-# Garante que as divisões aninhadas tenham orientação oposta (Horizontal -> Vertical)
+# Ensure nested divisions have opposite orientation (Horizontal -> Vertical)
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# Tamanho visível para janelas em modo 'accordion'
+# Visible size for windows in 'accordion' mode
 accordion-padding = 35
-# Layout padrão para novos Workspaces
+# Default layout for new Workspaces
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
-# Garante que o cursor do mouse siga o foco do teclado para o monitor
+# Ensure the mouse cursor follows keyboard focus to the monitor
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# Força a visibilidade de apps escondidos por Cmd+H (mantém o controle do WM)
+# Force visibility of apps hidden by Cmd+H (maintains WM control)
 automatically-unhide-macos-hidden-apps = true
 
-# Mapeamento de teclado
+# Key mapping
 [key-mapping]
 preset = 'qwerty'
 
 # =======================#
-# 3. GAPS (ESPAÇAMENTO)
+# 3. GAPS (SPACING)
 # =======================#
 [gaps]
 inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+inner.vertical =   10
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
 
 
 # ====================================================================
-# 4. ATALHOS DE WORKFLOW - MODE 'MAIN'
+# 4. WORKFLOW SHORTCUTS - MODE 'MAIN'
 # ====================================================================
 [mode.main.binding]
 
-### FOCO DE MONITOR (Ctrl + Alt + [Direção]) ###
-# Move o foco (e o mouse) para a tela na direção especificada. Essencial para multi-monitor.
+### MONITOR FOCUS (Ctrl + Alt + [Direction]) ###
+# Move focus (and mouse) to the screen in the specified direction. Essential for multi-monitor.
 ctrl-alt-h = 'focus-monitor left'
 ctrl-alt-l = 'focus-monitor right'
 ctrl-alt-k = 'focus-monitor up'
 ctrl-alt-j = 'focus-monitor down'
 
-### MOVIMENTO DE WORKSPACE PARA MONITOR (Ctrl + Alt + Shift + [Direção]) ###
-# Move o workspace COMPLETO para o monitor na direção específica (Lógica paralela ao Focus Monitor).
+### MOVE WORKSPACE TO MONITOR (Ctrl + Alt + Shift + [Direction]) ###
+# Move the ENTIRE workspace to the specific monitor (Parallel logic to Focus Monitor).
 ctrl-alt-shift-h = 'move-workspace-to-monitor left'
 ctrl-alt-shift-l = 'move-workspace-to-monitor right'
 ctrl-alt-shift-k = 'move-workspace-to-monitor up'
 ctrl-alt-shift-j = 'move-workspace-to-monitor down'
 
-# Atalho de fallback para mover o workspace para o próximo monitor sequencialmente
+# Fallback shortcut to move the workspace to the next sequential monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next' 
 
 
-### NAVEGAÇÃO E FOCO DE JANELAS (Alt + HJKL) ###
-# Navegação Vim-style para focar a janela adjacente.
+### WINDOW NAVIGATION AND FOCUS (Alt + HJKL) ###
+# Vim-style navigation to focus the adjacent window.
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-### MOVIMENTAR JANELA (Alt + Shift + HJKL) ###
-# Move a janela focada dentro do workspace atual.
+### MOVE WINDOW (Alt + Shift + HJKL) ###
+# Move the focused window within the current workspace.
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-### REDIMENSIONAR (Alt + +/-) ###
+### RESIZE (Alt + +/-) ###
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
-### LAYOUTS E TOGGLES ###
-alt-slash = 'layout tiles horizontal vertical'      # Alterna entre Horizontal/Vertical Tiles
-alt-comma = 'layout accordion horizontal vertical' # Alterna entre Horizontal/Vertical Accordion
-cmd-alt-f = 'fullscreen'                          # Toggles Fullscreen AeroSpace (Zoom)
-cmd-shift-f = 'macos-native-fullscreen'           # Toggles Fullscreen nativo do macOS
+### LAYOUTS AND TOGGLES ###
+alt-slash = 'layout tiles horizontal vertical'       # Toggle between Horizontal/Vertical Tiles
+alt-comma = 'layout accordion horizontal vertical' # Toggle between Horizontal/Vertical Accordion
+cmd-alt-f = 'fullscreen'                           # Toggles AeroSpace Fullscreen (Zoom)
+cmd-shift-f = 'macos-native-fullscreen'            # Toggles native macOS Fullscreen
 
-# Workspaces Mnemônicos: C-Code, T-Terminal, W-Web, D-Docs, S-Social, U-Utils
+# Mnemonic Workspaces: C-Code, T-Terminal, W-Web, D-Docs, S-Social, U-Utils
 
-### WORKSPACES MNEMÔNICOS (FOCO E MOVIMENTO) ###
+### MNEMONIC WORKSPACES (FOCUS AND MOVE) ###
 alt-c = 'workspace C̲ode'
 alt-shift-c = 'move-node-to-workspace C̲ode'
 
@@ -129,23 +129,23 @@ alt-o = 'workspace Other'
 alt-shift-o = 'move-node-to-workspace Other'
 
 ### WORKSPACE UTILS ###
-alt-tab = 'workspace-back-and-forth' # Volta para o Workspace anterior (Toggle)
+alt-tab = 'workspace-back-and-forth' # Toggle to the previous Workspace
 
-### MODO SERVIÇO ###
-# Entra no modo de utilitários de manutenção para Recarregar, Resetar Layout, etc.
+### SERVICE MODE ###
+# Enter maintenance utilities mode to Reload, Reset Layout, etc.
 alt-shift-semicolon = 'mode service'
 
 # ====================================================================
-# 5. ATALHOS DE MANUTENÇÃO - MODE 'SERVICE'
-# (Ativados após Alt+Shift+Semicolon)
+# 5. MAINTENANCE SHORTCUTS - MODE 'SERVICE'
+# (Activated after Alt+Shift+Semicolon)
 # ====================================================================
 [mode.service.binding]
-esc = ['reload-config', 'mode main']                  # Recarrega a config e volta para 'main'
-r = ['flatten-workspace-tree', 'mode main']           # Reseta o layout do workspace atual
-f = ['layout floating tiling', 'mode main']           # Alterna a janela focada entre floating/tiling
-backspace = ['close-all-windows-but-current', 'mode main'] # Fecha tudo, menos a janela focada
+esc = ['reload-config', 'mode main']                   # Reload config and return to 'main'
+r = ['flatten-workspace-tree', 'mode main']            # Reset the layout of the current workspace
+f = ['layout floating tiling', 'mode main']            # Toggle focused window between floating/tiling
+backspace = ['close-all-windows-but-current', 'mode main'] # Close everything but the focused window
 
-# Comandos de União de Janelas (Entra no mode.service e pressiona H, J, K ou L)
+# Window Join Commands (Enter service mode and press H, J, K, or L)
 h = ['join-with left', 'mode main']
 j = ['join-with down', 'mode main']
 k = ['join-with up', 'mode main']
@@ -153,16 +153,16 @@ l = ['join-with right', 'mode main']
 
 
 # ====================================================================
-# 6. ATRIBUIÇÃO AUTOMÁTICA DE APPS (Automação de Janelas)
+# 6. AUTOMATIC APP ASSIGNMENT (Window Automation)
 # ====================================================================
 
-# WORKSPACES DE CÓDIGO (C̲ode)
+# CODE WORKSPACES (C̲ode)
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.pycharm'
 run = ['layout tiling', 'move-node-to-workspace C̲ode']
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode' # Corrigido para 'com.microsoft.VSCode'
+if.app-id = 'com.microsoft.VSCode'
 run = ['layout tiling', 'move-node-to-workspace C̲ode']
 
 [[on-window-detected]]
@@ -170,9 +170,9 @@ if.app-id = 'com.sublimetext.4'
 run = ['layout tiling', 'move-node-to-workspace C̲ode']
 
 
-# WORKSPACES DE TERMINAL (T̲erminal)
+# TERMINAL WORKSPACES (T̲erminal)
 [[on-window-detected]]
-if.app-id = 'dev.warp.Warp-Stable' # Corrigido para 'dev.warp.Warp-Stable'
+if.app-id = 'dev.warp.Warp-Stable'
 run = ['layout tiling', 'move-node-to-workspace T̲erminal']
 
 [[on-window-detected]]
@@ -180,7 +180,7 @@ if.app-id = 'com.apple.Terminal'
 run = ['layout tiling', 'move-node-to-workspace T̲erminal']
 
 
-# WORKSPACES WEB (W̲eb)
+# WEB WORKSPACES (W̲eb)
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = ['layout tiling', 'move-node-to-workspace W̲eb']
@@ -190,13 +190,13 @@ if.app-id = 'com.apple.Safari'
 run = ['layout tiling', 'move-node-to-workspace W̲eb']
 
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen' # Corrigido para 'app.zen-browser.zen'
+if.app-id = 'app.zen-browser.zen'
 run = ['layout tiling', 'move-node-to-workspace W̲eb']
 
 
-# WORKSPACES SOCIAL E MÍDIA (S̲ocial)
+# SOCIAL AND MEDIA WORKSPACES (S̲ocial)
 [[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp' # Corrigido para 'net.whatsapp.WhatsApp'
+if.app-id = 'net.whatsapp.WhatsApp'
 run = ['layout tiling', 'move-node-to-workspace S̲ocial']
 
 [[on-window-detected]]
@@ -204,7 +204,7 @@ if.app-id = 'com.spotify.client'
 run = ['layout tiling', 'move-node-to-workspace S̲ocial']
 
 
-# WORKSPACES FLUTUANTES (Ignoram o Tiling)
+# FLOATING WORKSPACES (Ignore Tiling)
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = ['layout floating']
@@ -225,6 +225,6 @@ run = ['layout floating']
 if.app-id = 'com.nordvpn.macos'
 run = ['layout floating']
 
-# Todo resto abre em floating
+# Everything else opens floating
 [[on-window-detected]]
 run = ['layout floating']
